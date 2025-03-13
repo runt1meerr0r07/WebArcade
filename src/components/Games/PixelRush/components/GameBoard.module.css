@@ -1,0 +1,201 @@
+.gameBoardContainer {
+  width: 100%;
+  height: 100vh;
+  margin-top: -115px; 
+  padding-top: 0px;
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.gameBoard {
+  position: relative;
+  width: 1200px;   
+  height: 487px;  
+  background-color: #2a2f4e ;
+  border: none; 
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  overflow: hidden;
+  box-sizing: border-box; 
+  padding-right: 0; 
+  
+
+  background: 
+    linear-gradient(to right, #2a2f4e, #343e68, #2a2f4e);
+  
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 4px solid transparent;
+    background: linear-gradient(45deg, #5d6bac, #3a4675, #222a4c) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+.player {
+  position: absolute;  
+  width: 20px;
+  height: 20px;
+  background-color: #3498db;
+}
+
+.finishLine {
+  position: absolute;
+  width: 20px; 
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 10px,
+    #fff 10px,
+    #fff 20px
+  );
+  right: 0;
+  top: 0;
+  animation: finishLineGlow 2s infinite alternate;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  
+  &::before {
+    content: '🏁';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    animation: flagBounce 1s infinite alternate;
+  }
+  
+  &::after {
+    content: '🏁';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    animation: flagBounce 1s infinite alternate;
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes finishLineGlow {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 215, 0, 0.4); }
+}
+
+@keyframes flagBounce {
+  0% { transform: translateX(-50%) translateY(0); }
+  100% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.obstacle {
+  position: absolute;
+  border-radius: 3px;
+}
+.obstacle:empty {
+  background-color: #ff5555;
+}
+.startButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.startButton:hover {
+  background-color: #45a049;
+}
+.pauseButton {
+  position: absolute;
+  top: 60px; 
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  z-index: 1000; 
+}
+
+.pauseButton:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.obstacle {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  position: absolute;
+}
+
+.gameBoard {
+  position: relative;
+  overflow: hidden;
+}
+
+.gameControls {
+  position: absolute;
+  top: 65px; 
+  right: 15px;
+  z-index: 1000;
+}
+
+.header {
+  position: absolute;
+  top: -60px; 
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.levelIndicator {
+  position: absolute;
+  bottom: -0px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 25px;
+  background: linear-gradient(to right, rgba(42, 47, 78, 0.8), rgba(52, 62, 104, 0.9), rgba(42, 47, 78, 0.8));
+  border-radius: 12px;
+  border: 2px solid rgba(93, 107, 172, 0.8);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelIndicator::before {
+  content: '🏆';
+  margin-right: 10px;
+  font-size: 24px;
+}

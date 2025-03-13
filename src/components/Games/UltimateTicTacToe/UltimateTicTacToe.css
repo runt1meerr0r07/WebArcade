@@ -1,0 +1,67 @@
+
+.ultimate-square {
+    width: 60px;     
+    height: 60px;     
+    background: #ffffff;
+    border: 2px solid #2c3e50;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ultimate-square:hover {
+    background: #f0f0f0;
+    border-color: #2c3e50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.07); 
+}
+
+.ultimate-square:active {
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.ultimate-square img {
+    width: 40px;        
+    height: 40px;     
+}
+
+
+.square.active:hover {
+    background: #eee;
+}
+
+.square.inactive {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.big-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;           
+    padding: 8px;      
+    background: #2c3e50;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 0;  
+    border-top-left-radius: 0;  
+    border-top-right-radius: 0;  
+}
+
+.small-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;         
+    padding: 4px;       
+    background: #34495e;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.ultimate-square img {
+    width: 40px;        
+    height: 40px;        
+    display: block;  
+}

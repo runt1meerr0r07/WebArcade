@@ -1,0 +1,141 @@
+.touchControlsContainer {
+  position: absolute;
+  bottom: 40px;   
+  right: 20px;     
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.directionalPad {
+  position: relative;
+  width: 200px;   
+  height: 200px;   
+  background: rgba(20, 30, 50, 0.7);
+  border-radius: 50%;
+  pointer-events: auto;
+  border: 3px solid rgba(100, 150, 255, 0.5);  /* Thicker border */
+  box-shadow: 0 0 30px rgba(0, 100, 255, 0.3); /* Larger glow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.middleRow {
+  display: contents;
+}
+
+.spacer {
+  display: none;
+}
+
+.touchButton {
+  position: absolute;
+  width: 80px;    
+  height: 80px;   
+  padding: 0;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+
+.upButton {
+  top: 10px;       
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.downButton {
+  bottom: 10px;   
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.leftButton {
+  left: 10px;     
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rightButton {
+  right: 10px;   
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.buttonImage {
+  width: 65px;   
+  height: 65px; 
+  transition: all 0.2s ease;
+}
+
+.directionalPad::after {
+  content: '';
+  position: absolute;
+  width: 40px;    
+  height: 40px; 
+  background: rgba(100, 150, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+
+.touchButton:active .buttonImage, 
+.touchButton.active .buttonImage {
+  filter: drop-shadow(0 0 15px rgba(100, 180, 255, 0.8));
+  transform: scale(1.2);
+}
+
+.upButton::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;   
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(255, 255, 255, 0.5);
+  top: -15px;                          
+  pointer-events: none;
+}
+
+.downButton::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(255, 255, 255, 0.5);
+  bottom: -10px;
+  pointer-events: none;
+}
+
+.leftButton::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-right: 8px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 8px solid transparent;
+  left: -10px;
+  pointer-events: none;
+}
+
+.rightButton::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 8px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 8px solid transparent;
+  right: -10px;
+  pointer-events: none;
+}

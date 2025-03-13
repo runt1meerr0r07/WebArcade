@@ -1,0 +1,78 @@
+.timerContainer {
+  position: absolute;
+  top: 50px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  z-index: 1000;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  padding: 10px 22px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 100, 255, 0.3);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.timerIcon {
+  font-size: 1.5rem;
+  margin-right: 12px;
+}
+
+.timerText {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.normal {
+  color: #ffffff;
+}
+
+.warning {
+  color: #ffcc00;
+  animation: pulse 1s infinite alternate;
+  text-shadow: 0 0 10px #ffcc00;
+}
+
+.critical {
+  color: #ff3333;
+  animation: fastPulse 0.5s infinite alternate;
+  text-shadow: 0 0 15px #ff3333;
+  font-size: 2.2rem;
+}
+
+.timer.critical {
+  background-color: rgba(40, 0, 0, 0.8);
+  border-color: rgba(255, 50, 50, 0.4);
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes fastPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@media (max-width: 768px) {
+  .timerContainer {
+    top: 15px;
+  }
+  
+  .timerText {
+    font-size: 1.6rem;
+  }
+  
+  .timerText.critical {
+    font-size: 1.8rem;
+  }
+}

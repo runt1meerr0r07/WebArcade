@@ -1,0 +1,420 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px auto;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(26, 26, 26, 0.8);
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 
+                inset 0 2px 12px rgba(255, 255, 255, 0.1);
+    width: 380px;
+    height: 380px;
+    transition: all 0.3s ease;
+}
+
+.status-box {
+    display: none; 
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 360px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+
+.square {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51, 51, 51, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.square:hover {
+    background-color: rgba(68, 68, 68, 0.9);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.square:active {
+    transform: scale(0.98);
+}
+
+.square:focus {
+    outline: none;
+    box-shadow: 0 0 10px #fff;
+}
+
+.square img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.square:hover img {
+    transform: scale(1.1);
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    padding: 20px;
+}
+
+h1 {
+    display: none; 
+    color: #fff;
+    font-size: 36px;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 10px #fff;
+}
+
+
+.winning-line {
+    position: absolute;
+    background-color: #ff0000;
+    height: 4px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.horizontal-line {
+    width: 100%;
+}
+
+.horizontal-line.top { top: 16.67%; }
+.horizontal-line.middle { top: 50%; }
+.horizontal-line.bottom { top: 83.33%; }
+
+.vertical-line {
+    height: 100%;
+    width: 4px;
+}
+
+.vertical-line.left { left: 16.67%; }
+.vertical-line.middle { left: 50%; }
+.vertical-line.right { left: 83.33%; }
+
+.diagonal-line-1 {
+    width: 140%;
+    transform: rotate(45deg);
+    top: 50%;
+    left: -20%;
+}
+
+.diagonal-line-2 {
+    width: 140%;
+    transform: rotate(-45deg);
+    top: 50%;
+    left: -20%;
+}
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dialog-box {
+    background-color: rgba(30, 35, 45, 0.95);
+    border: 2px solid rgba(100, 120, 200, 0.5);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.dialog-message {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dialog-close-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.reset-button {
+    background-color: rgba(0, 120, 255, 0.8);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.reset-button:hover {
+    background-color: rgba(0, 120, 255, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.reset-button:active {
+    transform: translateY(-1px);
+}
+
+.view-button {
+    background-color: rgba(60, 60, 70, 0.8);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.view-button:hover {
+    background-color: rgba(80, 80, 90, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.turn-indicator {
+    background: rgba(20, 25, 45, 0.75) !important; 
+    padding: 15px 30px !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid rgba(80, 100, 150, 0.15) !important;
+    width: fit-content !important;
+    color: white !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(5px) !important;
+    margin: 0 auto 20px auto;
+    display: block !important;
+    z-index: 1000;
+}
+
+.dialog-overlay.show {
+    display: flex;
+}
+
+.close-button-fixed {
+    position: absolute;
+    top:-10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 40, 40, 0.8);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.close-button-game {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 40, 40, 0.8);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.close-button {
+    position: fixed !important; 
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+    background: rgba(255, 40, 40, 0.9) !important;
+}
+
+.game {
+    position: relative;
+    padding-top: 50px !important; 
+}
+
+.game-mode-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(20, 25, 45, 0.45);
+    backdrop-filter: blur(5px);
+    max-width: 300px;
+    position: relative;
+}
+
+.game-mode-selector h3 {
+    margin: 15px 0 8px 0;
+    color: #e8e9f3;
+}
+
+.mode-button {
+    background: rgba(30, 35, 60, 0.7);
+    color: #e8e9f3;
+    border: 1px solid rgba(80, 100, 150, 0.3);
+    border-radius: 8px;
+    padding: 10px 30px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 180px;
+}
+
+.mode-button:hover {
+    transform: translateY(-3px);
+    background: rgba(40, 45, 70, 0.8);
+    border-color: rgba(100, 120, 200, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-box.victory {
+    background: linear-gradient(135deg, rgba(30, 60, 40, 0.95), rgba(20, 40, 20, 0.95));
+    border: 2px solid rgba(100, 255, 120, 0.5);
+}
+
+.dialog-message.victory {
+    color: #80ff90;
+}
+
+
+.dialog-box.defeat {
+    background: linear-gradient(135deg, rgba(60, 30, 40, 0.95), rgba(40, 20, 20, 0.95));
+    border: 2px solid rgba(255, 100, 100, 0.5);
+}
+
+.dialog-message.defeat {
+    color: #ff9080;
+}
+
+
+.score-message {
+    font-size: 18px;
+    margin: 0 0 20px 0;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    animation: pulseScore 1.5s infinite alternate;
+}
+
+.score-message.positive {
+    background-color: rgba(40, 180, 70, 0.2);
+    color: #70ff90;
+    border: 1px solid rgba(40, 180, 70, 0.4);
+}
+
+.score-message.negative {
+    background-color: rgba(180, 40, 40, 0.2);
+    color: #ff7070;
+    border: 1px solid rgba(180, 40, 40, 0.4);
+}
+
+.score-message.neutral {
+    background-color: rgba(180, 180, 40, 0.2);
+    color: #fff970;
+    border: 1px solid rgba(180, 180, 40, 0.4);
+}
+
+@keyframes pulseScore {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+
+
