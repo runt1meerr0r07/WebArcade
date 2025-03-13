@@ -1,8 +1,23 @@
-# React + Vite
+A collection of games built with React and Firebase. This interactive gaming platform features classic games with some challenges.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Games Included
 
-Currently, two official plugins are available:
+- **Tic-Tac-Toe**: Classic game with three AI levels, including an unbeatable "Impossible" mode
+- **Three-Move Tic-Tac-Toe**: Strategic variant where every fourth turn causes the earliest move to disappear
+- **Ultimate Tic-Tac-Toe**: Nested game boards for complex tactical gameplay
+- **Pixel Rush**: Test your reflexes navigating through obstacle courses
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- User authentication with Firebase
+- Live leaderboards to compete with others
+- Scoring system with difficulty-based points
+- Clean, intuitive UI with game-specific animations
+
+## Technologies
+
+Built using React, Redux, and Firebase. The application uses React hooks, React redux, GSAP for animation and Firestore database integration.
+
+---
+
+
