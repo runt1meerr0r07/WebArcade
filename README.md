@@ -18,6 +18,10 @@ A collection of games built with React and Firebase. This interactive gaming pla
 
 Built using React, Redux, and Firebase. The application uses React hooks, React redux, GSAP for animation and Firestore database integration.
 
+## Deployment
+
+Vercel: https://mini-games07.vercel.app/
+
 ---
 
 
