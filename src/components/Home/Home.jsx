@@ -154,7 +154,7 @@ function Home() {
       <div className="night-fog"></div>
       
       <div className="home-content">
-        <h1 className="home-title">Welcome to MiniGames</h1>
+        <h1 className="home-title">Welcome to WebArcade</h1>
         <p className="home-subtitle">Challenge yourself with fun brain games</p>
         
         <div className="carousel-container">

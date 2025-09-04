@@ -197,7 +197,7 @@ export function AuthenticationForm() {
     >
       <div className="auth-paper">
         <h3 className="auth-title">
-          Welcome to MiniGames, {type} with
+          Welcome to WebArcade, {type} with
         </h3>
 
         <div className="social-buttons">

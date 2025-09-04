@@ -7,7 +7,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-logo">
-        <img src={logo} alt="MiniGames Logo" className="footer-logo-img" />
+        <img src={logo} alt="WebArcade Logo" className="footer-logo-img" />
         </div>
 
         <div className="footer-links">
