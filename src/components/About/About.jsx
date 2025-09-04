@@ -26,12 +26,11 @@ function About() {
                 <div className="floating-buttons">
                     <button 
                         className="floating-button github"
-                        onClick={() => openLink('https://github.com/v7dant')}
+                        onClick={() => openLink('https://github.com/runt1meerr0r07')}
                     >
                         <FaGithub className="button-icon" />
                         <span className="button-text">GitHub</span>
                     </button>
-                    
                     <button 
                         className="floating-button linkedin"
                         onClick={() => openLink('https://www.linkedin.com/in/vedant-bothra-4335441b8/')}
